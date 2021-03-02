@@ -13,8 +13,9 @@ router.post('/signup', async (req, res) => {
     try {
         const user = new User({email, password})
         await user.save() //async opp 
-        const token = jwt.sign({userId: user._id}, 'MY SEECRET KEY') // we create a token
-        res.send({token})
+        const token = jwt.sign({userId: user._id}, 'MY_SEECRET_KEY') // we create a token
+        res.send({token});
+
     } catch(err) {
         res.status(422).send(err.message)
         // http erro code 422 === usuer sent inavlid data

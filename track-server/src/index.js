@@ -3,6 +3,7 @@ const express = require ('express') // we need express module
 const mongoose = require('mongoose') // connecting to MongoDB
 const bodyParser = require('body-parser') // handle the incoming JSON
 const authRoutes = require('./routes/authRoutes')
+const requireAuth = require('./middlewares/requireAuth')
 
 const app = express();
 
@@ -23,10 +24,10 @@ mongoose.connection.on('error', (err) => {
     console.error('Error Connecting', err)
 })
 
-app.get('/', (req, res) => {
+app.get('/', requireAuth, (req, res) => {
     // every time someone does a request (rew)
     // tou our root route we send a response (res)
-    res.send('Hiiii there!')
+    res.send(` Your email is: ${req.user.email}`)
 })
 
 
