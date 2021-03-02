@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
     // this will give only the token by itself and take out Bearer
 
     // second arg is secret key, then callback
-    jwt.verify(token, 'MY_SEECRET_KEY', async (err, payload) => {
+    jwt.verify(token, 'MY_SECRET_KEY', async (err, payload) => {
         if(err) {
             return res.status(401).send({ error: 'You must be logged in'})
         }

@@ -1,14 +1,17 @@
-require('./models/User') // no need for const 
+require('./models/User') // no need for const or var
+require('./models/Track') // we need track at least once in project like User
 const express = require ('express') // we need express module
 const mongoose = require('mongoose') // connecting to MongoDB
 const bodyParser = require('body-parser') // handle the incoming JSON
 const authRoutes = require('./routes/authRoutes')
+const trackRoutes = require('./routes/trackRoutes')
 const requireAuth = require('./middlewares/requireAuth')
 
 const app = express();
 
 app.use(bodyParser.json()) // this must be before authRoutes
 app.use(authRoutes) // we (associate) connect our routes with our app
+app.use(trackRoutes)
 
 const mongoUri = 'mongodb+srv://admin:nopass@trackapp.38xut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
