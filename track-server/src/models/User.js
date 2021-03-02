@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const router = require('../routes/authRoutes');
 
 // we are setting the usuers schema/parameters
 const userSchema = new mongoose.Schema({
@@ -33,8 +34,8 @@ userSchema.pre('save', function(next) {
                 return next(err)
             }
 
-            user.password = hash // our password is now hashed
-            next();
+        user.password = hash // our password is now hashed
+        next();
         })
     })
  })
@@ -54,11 +55,13 @@ userSchema.pre('save', function(next) {
                 return reject(false)
             }
 
-            resolve(true)
+            resolve(true) 
         });
 
     })
  }
+
+ 
 
 mongoose.model('User', userSchema) 
 // associating mongoose and the model for mongoDB

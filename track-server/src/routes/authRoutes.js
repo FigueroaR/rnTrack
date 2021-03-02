@@ -23,5 +23,27 @@ router.post('/signup', async (req, res) => {
     
 })
 
+router.post('/signin', async (req, res) => {
+    const {email, password} = req.body
+    if(!email || !password) {
+        return res.status(422).send({error: 'Must Provide Correct Email and Password'})
+    }
+
+    // look for a user with email of
+    const user = await User.findOne({email})
+
+    if(!user) {
+        return res.status(404).send({error: 'Inavlid password or email'})
+    }
+
+    try {
+        await user.comparePasswords(password)
+        const token = jwt.sign({userId: user_id}, 'MY_SEECRET_KEY')
+        res.send({token});
+    } catch(err) {
+        return res.status(422).send({erro: 'Inavlid password or email'})
+    }
+    
+})
 
 module.exports = router
