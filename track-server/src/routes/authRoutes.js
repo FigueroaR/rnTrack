@@ -30,19 +30,19 @@ router.post('/signin', async (req, res) => {
     }
 
     // look for a user with email of
-    const user = await User.findOne({email})
-
-    if(!user) {
-        return res.status(404).send({error: 'Inavlid password or email'})
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(422).send({ error: 'Invalid password or email' });
     }
-
+  
     try {
-        await user.comparePasswords(password)
-        const token = jwt.sign({userId: user_id}, 'MY_SEECRET_KEY')
-        res.send({token});
-    } catch(err) {
-        return res.status(422).send({erro: 'Inavlid password or email'})
+      await user.comparePassword(password);
+      const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
+      res.send({ token });
+    } catch (err) {
+      return res.status(422).send({ error: 'Invalid password or email' });
     }
+  
     
 })
 

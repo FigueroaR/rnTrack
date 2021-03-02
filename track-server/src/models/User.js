@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
-const router = require('../routes/authRoutes');
 
 // we are setting the usuers schema/parameters
 const userSchema = new mongoose.Schema({
@@ -40,7 +39,7 @@ userSchema.pre('save', function(next) {
     })
  })
 
- userSchema.methods.comparePasswords = function(candidatePassword) {
+ userSchema.methods.comparePassword = function(candidatePassword) {
     const user = this; // our uselr model in this schema
 
      // assemble our own promise, 
