@@ -6,9 +6,11 @@ const User = mongoose.model('User'); // accesing the User model
 const router = express.Router(); 
 //associate routes with app
 
-router.post('/signup', (req, res) => {
+router.post('/signup', async (req, res) => {
     //req is what we get from the server
-    console.log(req.body)
+    const {email, password} = req.body
+    const user = new User({email, password})
+    await user.save() //async opp 
     res.send('You made a post req')
 })
 
