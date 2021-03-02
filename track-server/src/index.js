@@ -1,4 +1,4 @@
-
+require('./models/User') // no need for const 
 const express = require ('express') // we need express module
 const mongoose = require('mongoose') // connecting to MongoDB
 const bodyParser = require('body-parser') // handle the incoming JSON
