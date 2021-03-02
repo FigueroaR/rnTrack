@@ -1,10 +1,12 @@
 
 const express = require ('express') // we need express module
 const mongoose = require('mongoose') // connecting to MongoDB
+const bodyParser = require('body-parser') // handle the incoming JSON
 const authRoutes = require('./routes/authRoutes')
 
 const app = express();
 
+app.use(bodyParser.json()) // this must be before authRoutes
 app.use(authRoutes) // we (associate) connect our routes with our app
 
 const mongoUri = 'mongodb+srv://admin:nopass@trackapp.38xut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
