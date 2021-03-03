@@ -1,20 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native'
-import TrackDetailScreen from './TrackDetailScreen';
+import {View, StyleSheet} from 'react-native'
+import { Text, Input, Button} from 'react-native-elements' // pre styled components
+import Spacer from '../components/Spacer'
+
 
 // navigation is our in our porps
 const SignupScreen = ({navigation}) => {
-    return <> 
-        <Text Style={{fontSize: 48}}>signup Screen</Text>
-        <Button 
-            title="Go to Sign In" 
-            onPress={() => navigation.navigate('Signin')}/>
-
-        <Button 
-            title="Main Flow" 
-            onPress={() => navigation.navigate('mainFlow')}/>
-            
-        </>
+    return (<> 
+        <Spacer><Text h3>Sign Up for tracker</Text></Spacer>
+        <Input label="Email" />
+        <Spacer />
+        <Input label="Password" />
+        <Spacer><Button title="Sign Up"/></Spacer>
+        
+        </>)
 }
 
 const styles = StyleSheet.create({
