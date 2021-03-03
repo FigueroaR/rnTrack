@@ -12,6 +12,8 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen'
 import TrackDetailScreen from './src/screens/TrackDetailScreen'
 import TrackListScreen from './src/screens/TrackListScreen'
 
+import {Provider as AuthProvider} from  './src/context/authContext'
+
 //switch nav lets us flow betwwen different screns quickly
 const switchNavigator = createSwitchNavigator({
     // link to loginFlow
@@ -32,4 +34,13 @@ const switchNavigator = createSwitchNavigator({
 })
 
 //top level switch nav, fir show log in flow, then the main flow later on
-export default createAppContainer(switchNavigator)
+const App = createAppContainer(switchNavigator)
+
+// our own custom components
+export default () => { // now our provider giver info to all our screens
+   return(
+    <AuthProvider>
+        <App />
+    </AuthProvider>
+   ) 
+}
