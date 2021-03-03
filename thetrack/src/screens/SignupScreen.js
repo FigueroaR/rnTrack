@@ -1,11 +1,14 @@
-import React, {useState } from 'react';
+import React, {useState, useContext } from 'react';
 import {View, StyleSheet} from 'react-native'
 import { Text, Input, Button} from 'react-native-elements' // pre styled components
 import Spacer from '../components/Spacer'
+import {Context as AuthContext} from '../context/authContext'
 
 
 // navigation is our in our porps
 const SignupScreen = ({navigation}) => {
+    const {state, signup} = useContext(AuthContext)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -29,7 +32,9 @@ const SignupScreen = ({navigation}) => {
             autoCorrect={false}
             secureTextEntry // hides our text
             />
-        <Spacer><Button title="Sign Up"/></Spacer>
+        <Spacer>
+            <Button title="Sign Up" onPress={ () => signup({email, password})} />
+        </Spacer>
         
         </View>)
 }
