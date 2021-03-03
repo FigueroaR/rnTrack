@@ -6,18 +6,30 @@ import Spacer from '../components/Spacer'
 
 // navigation is our in our porps
 const SignupScreen = ({navigation}) => {
-    return (<> 
+    return (<View style={styles.container}> 
         <Spacer><Text h3>Sign Up for tracker</Text></Spacer>
         <Input label="Email" />
         <Spacer />
         <Input label="Password" />
         <Spacer><Button title="Sign Up"/></Spacer>
         
-        </>)
+        </View>)
 }
 
-const styles = StyleSheet.create({
+SignupScreen.navigationOptions = () => {
+    return {
+      headerShown: false, // we are hiding the header
+    };
+  };
 
+const styles = StyleSheet.create({
+    container: {
+        borderColor: 'red',
+        borderWidth: 10,
+        flex: 1, // this will make the view fir entire screen
+        justifyContent: 'center', //vert center
+        paddingBottom: 200
+    }
 })
 
 
