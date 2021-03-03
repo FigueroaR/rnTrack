@@ -12,6 +12,8 @@ const SignupScreen = ({navigation}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    console.log(state)
+
 
     return (<View style={styles.container}> 
         <Spacer><Text h3>Sign Up for tracker</Text></Spacer>
@@ -32,6 +34,7 @@ const SignupScreen = ({navigation}) => {
             autoCorrect={false}
             secureTextEntry // hides our text
             />
+        {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
         <Spacer>
             <Button title="Sign Up" onPress={ () => signup({email, password})} />
         </Spacer>
@@ -47,11 +50,15 @@ SignupScreen.navigationOptions = () => {
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: 'red',
-        borderWidth: 10,
         flex: 1, // this will make the view fir entire screen
         justifyContent: 'center', //vert center
         paddingBottom: 200
+    },
+    errorMessage: {
+        fontSize: 16,
+        color: 'red',
+        marginLeft: 15,
+        marginTop: 15
     }
 })
 
