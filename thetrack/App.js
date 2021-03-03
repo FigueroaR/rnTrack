@@ -12,14 +12,16 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen'
 import TrackDetailScreen from './src/screens/TrackDetailScreen'
 import TrackListScreen from './src/screens/TrackListScreen'
 
-
+//switch nav lets us flow betwwen different screns quickly
 const switchNavigator = createSwitchNavigator({
     // link to loginFlow
     loginFlow:  createStackNavigator({ // this will toggle between:
         Signup: SignupScreen,
         Signin: SigninScreen
     }),
+    // botton nav will show in borrom of screen
     mainFlow: createBottomTabNavigator({
+            // stack nav show on top part of device
         trackListFlow: createStackNavigator({ // this stack has its own sreens and flow
             TrackList: TrackListScreen,
             TrackDetail: TrackDetailScreen
