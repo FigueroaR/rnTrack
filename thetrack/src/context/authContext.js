@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import { AsyncStorage } from 'react-native';
+
 import createDataContext from './createDataContext';
 import trackerApi from '../api/tracker';
-//import { navigate } from '../navigationRef';
+import { navigate } from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -14,6 +14,7 @@ const authReducer = (state, action) => {
       return state;
   }
 };
+
 
 const signup = dispatch => async ({ email, password }) => {
   try {

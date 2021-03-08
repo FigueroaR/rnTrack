@@ -14,6 +14,8 @@ import TrackListScreen from './src/screens/TrackListScreen'
 
 import {Provider as AuthProvider} from  './src/context/authContext'
 
+import { setNavigator } from './src/navigationRef'
+
 //switch nav lets us flow betwwen different screns quickly
 const switchNavigator = createSwitchNavigator({
     // link to loginFlow
@@ -40,7 +42,11 @@ const App = createAppContainer(switchNavigator)
 export default () => { // now our provider giver info to all our screens
    return(
     <AuthProvider>
-        <App />
+        <App
+            ref={(navigator) => {
+                setNavigator(navigator);
+            }}
+        />
     </AuthProvider>
    ) 
 }
