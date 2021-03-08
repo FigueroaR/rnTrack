@@ -1,5 +1,5 @@
 import React, {useState, useContext } from 'react';
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, TouchableOpacity} from 'react-native'
 import { Text, Input, Button} from 'react-native-elements' // pre styled components
 import Spacer from '../components/Spacer'
 import {Context as AuthContext} from '../context/authContext'
@@ -38,6 +38,11 @@ const SignupScreen = ({navigation}) => {
         <Spacer>
             <Button title="Sign Up" onPress={ () => signup({email, password})} />
         </Spacer>
+        <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+            <Spacer>
+                <Text style={styles.link}>Sign In</Text>
+            </Spacer>
+        </TouchableOpacity>
         
         </View>)
 }
@@ -59,6 +64,9 @@ const styles = StyleSheet.create({
         color: 'red',
         marginLeft: 15,
         marginTop: 15
+    },
+    link : {
+        color: 'blue'
     }
 })
 
